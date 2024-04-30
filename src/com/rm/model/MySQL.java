@@ -13,7 +13,7 @@ public class MySQL {
 
     private static Connection connection;
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "2001ApriL05@";
+    private static final String PASSWORD = "*****";
     private static final String DATABASE = "resturant_management_system_2";
 
     private static Statement createConnection() throws Exception {
