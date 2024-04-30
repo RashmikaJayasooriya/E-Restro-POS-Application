@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="meal_item_reg" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="daf407be-f19d-4c75-a34b-8a15d34b82d0">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="rest2.jrdax"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="Parameter1" class="java.lang.String"/>
+	<parameter name="Parameter2" class="java.lang.String"/>
+	<parameter name="Parameter3" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT id FROM meal_item WHERE meal_item.name=$P{Parameter1}  AND meal_item.meal_item_type_id IN(SELECT id FROM meal_item_type WHERE meal_item_type.name=$P{Parameter2})]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="meal_item"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="131" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="30" width="555" height="30" forecolor="#FFFFFF" backcolor="#0066FF" uuid="9ace2433-3fe3-4ac2-ac30-e2f21dd160f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEAL ITEM DETAILS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="0" width="110" height="30" uuid="faf65319-c883-4bad-b1d8-b8499e24e402"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Registered Date :-]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="470" y="0" width="85" height="30" uuid="3a9b8eca-d382-4d3a-9bc5-14c85a1897be"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="120" width="555" height="1" backcolor="#030303" uuid="e632c49c-ca45-4e14-8548-a797f1e050d2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="80" width="100" height="30" uuid="28cb01af-ef66-4ec1-b32c-0375ead33ca2"/>
+				<textElement textAlignment="Left">
+					<font fontName="Alef" size="12"/>
+				</textElement>
+				<text><![CDATA[Meal Item Name :-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="80" width="170" height="30" uuid="fead5f69-3946-4c0d-b91d-015e335e483e"/>
+				<textElement>
+					<font fontName="Alef" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Parameter1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="350" y="80" width="100" height="30" uuid="e521c450-1683-49b7-a6ab-cefe1874e842"/>
+				<textElement textAlignment="Right">
+					<font fontName="Alef" size="12"/>
+				</textElement>
+				<text><![CDATA[Meal Item Type :-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="80" width="105" height="30" uuid="e0000dc1-e66b-47ac-ae06-29194a76ccbe"/>
+				<textElement textAlignment="Right">
+					<font fontName="Alef" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Parameter2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="49" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="40" uuid="862fb790-3b81-4364-96d5-79568405cd4c"/>
+				<subreportParameter name="Parameter1">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{Parameter3} + "/meal_item_port.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="68" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="1" backcolor="#030303" uuid="edc8a825-dafa-43ea-aad3-22e28d7f69f0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<subreport>
+				<reportElement x="0" y="8" width="555" height="47" uuid="841cf2a5-df65-4e06-ae11-45cd2261c26f"/>
+				<subreportParameter name="Parameter1">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{Parameter3} + "/meal_item_inv.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="44">
+			<rectangle>
+				<reportElement mode="Opaque" x="20" y="21" width="490" height="9" backcolor="#0066FF" uuid="231756df-2d00-411e-ab1b-f01c75795c29">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="510" y="11" width="45" height="28" uuid="c894b389-e883-4271-91cc-c66ed7c423b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Amiri" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
